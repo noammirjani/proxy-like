@@ -1,11 +1,17 @@
 package proxie;
+import FileManager.FileManagment;
+
 import java.util.Scanner;
 
 public class Controller {
 
     static Scanner scanner = new Scanner(System.in);
+    static final String BLOCKED_FILE_NAME = "blocked.txt";
 
-    public void Controller(){}
+    public void Controller(){
+        FileManagment blockedUrlFile = new FileManagment();
+
+    }
 
     public void run(){
 
