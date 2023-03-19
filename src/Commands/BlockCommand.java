@@ -10,7 +10,6 @@ public class BlockCommand implements Command{
 
     public BlockCommand(String url){
         this.url = url;
-        System.out.println(url);
         validate();
     }
 
@@ -19,7 +18,6 @@ public class BlockCommand implements Command{
             new URL(url).toURI();
             return true;
         } catch (MalformedURLException | URISyntaxException e)  {
-            System.out.println("NO!");
             throw new RuntimeException(ERROR_MSG);
         }
     }

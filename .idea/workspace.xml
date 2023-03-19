@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f230fa3-c119-4e3b-a272-6dbdbe531726" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Commands/DownloadCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Commands/PrintCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/BlockCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/BlockCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/UnblockCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/UnblockCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileManager/FileManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileManager/FileManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataManager/UrlList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataManager/UrlList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proxie/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxie/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/proxie/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxie/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +74,7 @@
       <updated>1678977848547</updated>
       <workItem from="1678977850007" duration="3529000" />
       <workItem from="1679128460850" duration="9013000" />
-      <workItem from="1679139560308" duration="23193000" />
+      <workItem from="1679139560308" duration="23313000" />
     </task>
     <servers />
   </component>
