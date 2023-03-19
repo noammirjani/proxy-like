@@ -1,11 +1,25 @@
 package proxie;
-import Commands.BlockCommand;
-import Commands.PrintCommand;
-import Commands.UnblockCommand;
+import Commands.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Controller {
     Scanner scanner = new Scanner(System.in);
+
+    private Map<String, Command> CommandsMenu = new HashMap<>();
+
+    public Controller(){
+
+        setCommandsMenu();
+    }
+
+    private void setCommandsMenu(){
+        CommandsMenu.put("b", new BlockCommand());
+        CommandsMenu.put("u", new UnblockCommand());
+        CommandsMenu.put("p", new PrintCommand());
+        CommandsMenu.put("d", new DownloadCommand());
+    }
 
     public void run() {
 
@@ -16,27 +30,13 @@ public class Controller {
 
                 if (userInput.equals("q")) break;
 
-                //will be change to array of commands for all the kinds of command - loop on array of commands
-                switch (userInput) {
-                    case "p":
-                        PrintCommand wantedCommand3 = new PrintCommand();
-                        wantedCommand3.execute();
-                        break;
-                    case "b":
-                        BlockCommand wantedCommand = new BlockCommand(scanner.nextLine().trim());
-                        wantedCommand.execute();
-                        break;
-                    case "u":
-                        UnblockCommand wantedCommand2 = new UnblockCommand(scanner.nextLine().trim());
-                        wantedCommand2.execute();
-                        break;
-                    case "d":
-                        // Handle input d - the parameter will be:: scanner.nextLine().trim().split(" ", 2);
-                        break;
-                    default:
-                        break;
+                Command command = CommandsMenu.get(userInput);
+                if (command == null) {
+                    throw new IllegalArgumentException("Invalid command");
                 }
 
+                String data = scanner.nextLine().trim();
+                command.execute(data);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

@@ -2,17 +2,10 @@ package Commands;
 
 public class DownloadCommand implements Command{
     private static final String ERROR_MSG = "invalid option";
-    private String Options;
-    private String url;
 
+    public DownloadCommand(){}
 
-    public DownloadCommand(String[] data){
-        this.Options = data[0];
-        this.url = data[1];
-        validate();
-    }
-
-    private boolean validate() {
+    private boolean validate(String options, String url) {
         try {
             return true;
         } catch (Exception e) {
@@ -21,5 +14,8 @@ public class DownloadCommand implements Command{
     }
 
     @Override
-    public void execute() throws Exception{}
+    public void execute(String data) throws Exception{
+        //String Options, url = data.split(" ", 2);
+        //validate()
+    }
 }

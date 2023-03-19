@@ -6,14 +6,10 @@ import java.net.URISyntaxException;
 
 public class BlockCommand implements Command{
     private static final String ERROR_MSG = "invalid URL";
-    private String url;
 
-    public BlockCommand(String url){
-        this.url = url;
-        validate();
-    }
+    public BlockCommand(){}
 
-    private boolean validate() {
+    private boolean validate(String url) {
         try {
             new URL(url).toURI();
             return true;
@@ -23,10 +19,9 @@ public class BlockCommand implements Command{
     }
 
     @Override
-    public void execute() throws Exception{
+    public void execute(String url) throws Exception{
 
-
-        if(!FileManage.getInstance().searchInFile(fileName, url)) {
+        if(validate(url) && !FileManage.getInstance().searchInFile(fileName, url)) {
             FileManage.getInstance().writeToFile(fileName, url);
         }
     }
