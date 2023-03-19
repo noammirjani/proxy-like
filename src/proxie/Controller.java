@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Controller {
     Scanner scanner = new Scanner(System.in);
-
     private Map<String, Command> CommandsMenu = new HashMap<>();
 
     public Controller(){
