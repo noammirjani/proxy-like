@@ -6,11 +6,10 @@ import java.util.Scanner;
 
 
 public class FileManagment {
-    public static void writeToFile(String fileName, String content) {
-        try {
-            FileWriter writer = new FileWriter(fileName);
-            writer.write(content);
-            writer.close();
+
+    public static void writeToFile(String fileName, String url) {
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(url + "\n");
             System.out.println("Successfully wrote to file.");
         } catch (IOException e) {
             System.out.println("An error occurred while writing to file.");
@@ -20,14 +19,11 @@ public class FileManagment {
 
     public static String readFromFile(String fileName) {
         String content = "";
-        try {
-            File file = new File(fileName);
-            Scanner scanner = new Scanner(file);
+        try (Scanner scanner = new Scanner(new File(fileName))) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 content += line + "\n";
             }
-            scanner.close();
         } catch (IOException e) {
             System.out.println("An error occurred while reading file.");
             e.printStackTrace();

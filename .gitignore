@@ -1,3 +1,5 @@
+out
+.idea
 /shelf/
 /workspace.xml
 # Editor-based HTTP Client requests
@@ -5,6 +7,4 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-./.idea
-./out
-./src
+blocked.txt
