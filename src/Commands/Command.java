@@ -1,5 +1,8 @@
 package Commands;
+import java.util.Scanner;
 
 public interface Command {
-    public void exacute();
+
+    String fileName = "blocked.txt";
+    void execute() throws Exception;
 }

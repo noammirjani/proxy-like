@@ -1,35 +1,45 @@
 package proxie;
-import FileManager.FileManagment;
-
+import Commands.BlockCommand;
+import Commands.PrintCommand;
+import Commands.UnblockCommand;
 import java.util.Scanner;
 
 public class Controller {
+    Scanner scanner = new Scanner(System.in);
 
-    static Scanner scanner = new Scanner(System.in);
-    static final String BLOCKED_FILE_NAME = "blocked.txt";
+    public void run() {
 
-    public void Controller(){
-        FileManagment blockedUrlFile = new FileManagment();
+        while (true) {
+            try {
+                System.out.println("please enter b | u | p | q | d");
+                String userInput =  scanner.next().trim();
 
-    }
+                if (userInput.equals("q")) break;
 
-    public void run(){
+                //will be change to array of commands for all the kinds of command - loop on array of commands
+                switch (userInput) {
+                    case "p":
+                        PrintCommand wantedCommand3 = new PrintCommand();
+                        wantedCommand3.execute();
+                        break;
+                    case "b":
+                        BlockCommand wantedCommand = new BlockCommand(scanner.nextLine().trim());
+                        wantedCommand.execute();
+                        break;
+                    case "u":
+                        UnblockCommand wantedCommand2 = new UnblockCommand(scanner.nextLine().trim());
+                        wantedCommand2.execute();
+                        break;
+                    case "d":
+                        // Handle input d - the parameter will be:: scanner.nextLine().trim().split(" ", 2);
+                        break;
+                    default:
+                        break;
+                }
 
-        while(true){
-            String[] userInput = getData();
-
-            if(userInput[0].trim().equals("q")) break;
-
-            try{
-
-            } catch(Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
-    }
-
-    private String[] getData(){
-        String data =  scanner.nextLine();
-        return data.split(" ");
     }
 }

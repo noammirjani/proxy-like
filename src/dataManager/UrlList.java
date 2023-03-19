@@ -1,4 +1,4 @@
-package Singleton;
+package dataManager;
 import java.util.HashSet;
 import java.util.Set;
 
