@@ -31,6 +31,7 @@ public class Controller {
 
                 Command command = CommandsMenu.get(userInput);
                 if (command == null) {
+                    scanner.nextLine();
                     throw new IllegalArgumentException("Invalid command");
                 }
 
@@ -38,8 +39,7 @@ public class Controller {
                 command.execute(data);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                scanner.nextLine();
+                }
             }
         }
     }
-}

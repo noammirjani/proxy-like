@@ -12,6 +12,7 @@ public class BlockCommand implements Command{
 
     @Override
     public void execute(String url) throws Exception{
+
         String result = FileManage.getInstance().searchInFile(fileName, url);
         if(Validations.checkUrl(url) && "not found".equals(result)) {
             FileManage.getInstance().writeToFile(fileName, url);
