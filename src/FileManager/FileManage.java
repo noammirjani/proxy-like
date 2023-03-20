@@ -1,10 +1,6 @@
 package FileManager;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,9 +12,9 @@ import java.nio.file.Paths;
 public class FileManage {
     private static FileManage instance;
 
-    final String NOT_FOUND = "not found";
-    final String MATCH_URL = "match";
-    final String PREFIX_URL = "prefix";
+    final String NOT_BLOCKED = "not found";
+    final String MATCH_URL = "blocked - full";
+    final String PREFIX_URL = "blocked - prefix";
 
 
     public static FileManage getInstance() {
@@ -44,19 +40,6 @@ public class FileManage {
         }
     }
 
-    public String readFromFile(String fileName) throws Exception {
-        String content = "";
-        try (Scanner scanner = new Scanner(new File(fileName))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                content += line + "\n";
-            }
-        } catch (IOException e) {
-            throwException("cannot read", fileName);
-        }
-        return content;
-    }
-
     public List<String> getFileData(String fileName) throws Exception {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             List<String> lines = Files.readAllLines(Paths.get(fileName));
@@ -68,23 +51,22 @@ public class FileManage {
     }
 
     public String searchInFile(String fileName, String wantedUrl) throws Exception {
-        if (!Files.exists(Paths.get(fileName))) return NOT_FOUND;
+        if (!Files.exists(Paths.get("blocked.txt"))) return NOT_BLOCKED;
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.equals(wantedUrl)) return MATCH_URL;
-                if (line.startsWith(wantedUrl)) return PREFIX_URL;
+                if (wantedUrl.startsWith(line + "/")) return PREFIX_URL;
             }
         } catch (IOException e) {
             throwException("cannot read", fileName);
         }
-        return NOT_FOUND;
+        return NOT_BLOCKED;
     }
 
     public void throwException(String str, String fileName) throws Exception{
 
         throw new Exception(str + " " + fileName);
     }
-
 }
