@@ -9,19 +9,11 @@ public class BlockCommand implements Command{
 
     public BlockCommand(){}
 
-    private boolean validate(String url) {
-        try {
-            new URL(url).toURI();
-            return true;
-        } catch (MalformedURLException | URISyntaxException e)  {
-            throw new RuntimeException(ERROR_MSG);
-        }
-    }
 
     @Override
     public void execute(String url) throws Exception{
-
-        if(validate(url) && !FileManage.getInstance().searchInFile(fileName, url)) {
+        String result = FileManage.getInstance().searchInFile(fileName, url);
+        if(Validations.checkUrl(url) && "not found".equals(result)) {
             FileManage.getInstance().writeToFile(fileName, url);
         }
     }

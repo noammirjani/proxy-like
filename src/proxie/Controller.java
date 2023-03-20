@@ -38,6 +38,7 @@ public class Controller {
                 command.execute(data);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
+                scanner.nextLine();
             }
         }
     }

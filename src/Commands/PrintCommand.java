@@ -1,6 +1,9 @@
 package Commands;
 import FileManager.FileManage;
 
+import java.util.Collections;
+import java.util.List;
+
 
 public class PrintCommand implements Command{
 
@@ -9,6 +12,9 @@ public class PrintCommand implements Command{
     @Override
     public void execute(String data) throws Exception {
 
-        FileManage.getInstance().printSortedData(fileName);
+        List<String> lines = FileManage.getInstance().getFileData(fileName);
+        Collections.sort(lines);
+        System.out.println(String.join("\n", lines));
+
     }
 }

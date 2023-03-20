@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f230fa3-c119-4e3b-a272-6dbdbe531726" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/proxie/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxie/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +73,7 @@
       <workItem from="1678977850007" duration="3529000" />
       <workItem from="1679128460850" duration="9013000" />
       <workItem from="1679139560308" duration="23313000" />
+      <workItem from="1679315115231" duration="142000" />
     </task>
     <servers />
   </component>

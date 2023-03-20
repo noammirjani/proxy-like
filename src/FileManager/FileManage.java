@@ -16,6 +16,11 @@ import java.nio.file.Paths;
 public class FileManage {
     private static FileManage instance;
 
+    final String NOT_FOUND = "not found";
+    final String MATCH_URL = "match";
+    final String PREFIX_URL = "prefix";
+
+
     public static FileManage getInstance() {
         if (instance == null) {
             instance = new FileManage();
@@ -26,14 +31,14 @@ public class FileManage {
     public void removeRow(String fileName, String url) throws IOException {
         Path path = Paths.get(fileName);
         List<String> lines = Files.readAllLines(path);
-        lines.remove(url);
-        Files.write(path, lines);
+        if (lines.remove(url)){
+            Files.write(path, lines);
+        }
     }
 
     public void writeToFile(String fileName, String url) throws Exception {
         try (FileWriter writer = new FileWriter(fileName, true)) {
             writer.write(url + "\n");
-            System.out.println("Successfully wrote to file.");
         } catch (IOException e) {
             throwException("cannot write", fileName);
         }
@@ -62,17 +67,19 @@ public class FileManage {
         return null;
     }
 
-    public boolean searchInFile(String fileName, String wantedUrl) throws Exception {
-        if (!Files.exists(Paths.get(fileName))) return false;
+    public String searchInFile(String fileName, String wantedUrl) throws Exception {
+        if (!Files.exists(Paths.get(fileName))) return NOT_FOUND;
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
-            while ((line = br.readLine()) != null)
-                if(line.equals(wantedUrl)) return true;
+            while ((line = br.readLine()) != null) {
+                if (line.equals(wantedUrl)) return MATCH_URL;
+                if (line.startsWith(wantedUrl)) return PREFIX_URL;
+            }
         } catch (IOException e) {
             throwException("cannot read", fileName);
         }
-        return false;
+        return NOT_FOUND;
     }
 
     public void throwException(String str, String fileName) throws Exception{
@@ -80,9 +87,4 @@ public class FileManage {
         throw new Exception(str + " " + fileName);
     }
 
-    public void printSortedData(String fileName) throws Exception {
-        List<String> lines = getFileData(fileName);
-        Collections.sort(lines);
-        System.out.println(String.join("\n", lines));
-    }
 }
