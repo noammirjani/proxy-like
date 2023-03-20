@@ -7,6 +7,8 @@ import java.net.URL;
 public class Validations {
     private static final String INVALID_URL = "invalid URL";
     private static final String INVALID_COMMAND = "invalid command";
+
+    
     public static boolean checkUrl(String url) {
         try {
             new URL(url).toURI();
@@ -24,10 +26,5 @@ public class Validations {
 
     // Implement it !
     public static void checkOptions(String options) {
-
-
     }
-
-
-
 }
