@@ -36,7 +36,7 @@ public class Validations {
 
     public static void checkOptions(String options) {
         System.out.println(options);
-            String[] flags = options.split("(?!^)");
+            String[] flags = options.split("");
             if(!flags[0].equals("-")) {
                 throw new IllegalArgumentException(INVALID_OPTION);
             }
@@ -45,10 +45,6 @@ public class Validations {
             if (!FLAGS.contains(flags[i])) {
                 throw new IllegalArgumentException(INVALID_OPTION);
             }
-//            for (String flag : flags) {
-//                if (!FLAGS.contains(flag) && !flag.equals("-")) {
-//                    throw new IllegalArgumentException(INVALID_OPTION);
-//            }
         }
     }
 }

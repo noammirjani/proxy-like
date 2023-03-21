@@ -7,17 +7,17 @@ import java.net.URLConnection;
 public class ConcreteAccessUrl implements AccessUrl{
     private URLConnection urlConnect;
 
-    public ConcreteAccessUrl(URL url) throws Exception {
-        this.urlConnect =  url.openConnection();
+    public ConcreteAccessUrl(String url) throws Exception {
+        this.urlConnect =  (new URL(url)).openConnection();
 
-        HttpURLConnection.setFollowRedirects(false);
-        HttpURLConnection httpURLConnection = (HttpURLConnection)urlConnect;
-        httpURLConnection.setRequestMethod("HEAD");
-
-        int responseCode = httpURLConnection.getResponseCode();
-        if (responseCode != HttpURLConnection.HTTP_OK) {
-            throw new Exception(Integer.toString(responseCode));
-        }
+//        HttpURLConnection.setFollowRedirects(false);
+//        HttpURLConnection httpURLConnection = (HttpURLConnection)urlConnect;
+//        httpURLConnection.setRequestMethod("HEAD");
+//
+//        int responseCode = httpURLConnection.getResponseCode();
+//        if (responseCode != HttpURLConnection.HTTP_OK) {
+//            throw new Exception(Integer.toString(responseCode));
+//        }
     }
 
     public URLConnection getUrlConnection(){
