@@ -16,6 +16,5 @@ public class PrintCommand implements Command{
         List<String> lines = FileManage.getInstance().getFileData(fileName);
         Collections.sort(lines);
         System.out.println(String.join("\n", lines));
-
     }
 }

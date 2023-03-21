@@ -1,9 +1,7 @@
 package DecoratorForDownload;
 
 import FileManager.FileManage;
-import java.net.URL;
 import java.net.URLConnection;
-import java.util.logging.FileHandler;
 
 
 public class BlockedUrlAccess extends Decorator{
