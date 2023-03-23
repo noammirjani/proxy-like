@@ -1,5 +1,6 @@
 out
 .idea
+*.html
 /shelf/
 .idea/workspace.xml
 # Editor-based HTTP Client requests
