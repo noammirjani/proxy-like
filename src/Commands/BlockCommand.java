@@ -2,6 +2,7 @@ package Commands;
 
 import FileManager.FileManage;
 
+
 /**
  * A class that represents the "Block" command.
  * Implements the Command interface.
@@ -23,6 +24,8 @@ public class BlockCommand implements Command {
      */
     @Override
     public void execute(String url) throws Exception {
+
+        Validations.numOfParameters(url.split(" ").length, 1);
 
         // Search for the given URL in the blocked file.
         String result = FileManage.getInstance().searchInFile(fileName, url);

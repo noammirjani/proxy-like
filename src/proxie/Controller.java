@@ -35,6 +35,7 @@ public class Controller {
         CommandsMenu.put("u", new UnblockCommand());
         CommandsMenu.put("p", new PrintCommand());
         CommandsMenu.put("d", new DownloadCommand());
+        CommandsMenu.put("q", new QuitCommand());
     }
 
     /**
@@ -51,8 +52,6 @@ public class Controller {
                 System.out.println("please enter b | u | p | q | d");
                 String userInput =  scanner.next().trim();
 
-                if (userInput.equals("q")) break;
-
                 Command command = CommandsMenu.get(userInput);
                 if (command == null) {
                     scanner.nextLine();
@@ -61,6 +60,7 @@ public class Controller {
 
                 String data = scanner.nextLine().trim();
                 command.execute(data);
+                if (userInput.equals("q")) break;
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

@@ -4,26 +4,44 @@ import java.io.*;
 import java.net.URL;
 
 public class DownloadCommand implements Command{
-    private static final int NUM_OF_PARAMETERS = 3;
+    String[] options = {};
+    URL url = null;
+    String outputFile = "";
+
+
     public DownloadCommand(){}
+
+
+    private void setData(String data) throws Exception{
+        String[] dataArray = data.split(" ");
+
+        if(Validations.numOfParametersFlex(dataArray.length, 3, 2)){
+            //2 parameters
+            options = new String[]{};
+            url = new URL(dataArray[0]);
+            outputFile = dataArray[1];
+        }
+        else{
+            //3 parameters
+            options = dataArray[0].split("");
+            url = new URL(dataArray[1]);
+            outputFile = dataArray[2];
+        }
+        Validations.checkOptions(options);
+        Validations.checkUrl(url.toString());
+    }
+
 
     @Override
     public void execute(String data) throws Exception{
-        String[] dataArray = data.split(" ", 3);
 
-        Validations.numOfParameters(dataArray.length, NUM_OF_PARAMETERS);
-        Validations.checkUrl(dataArray[1]);
-        Validations.checkOptions(dataArray[0]);
-
-        String[] options = dataArray[0].split("");
-        URL url = new URL(dataArray[1]);
-        String outputFile = dataArray[2];
-
-        preDownload(options, url);
+        setData(data);
+        preDownload();
         downloadContent(url, outputFile);
     }
 
-    private void preDownload(String[] options, URL url) throws Exception {
+
+    private void preDownload() throws Exception {
 
         AccessUrl decorator = new ConcreteAccessUrl(url);
         for (String flag : options) {
@@ -32,8 +50,7 @@ public class DownloadCommand implements Command{
                 case "c" -> decorator = new CookiesAccess(decorator);
                 case "h" -> decorator = new HtmlAccess(decorator);
                 case "i" -> decorator = new ImageAccess(decorator);
-                default -> {  // throw new IllegalArgumentException("Unknown option flag: " + flag);
-                }
+                default -> {}
             }
         }
     }
@@ -49,12 +66,15 @@ public class DownloadCommand implements Command{
     private void downloadContent(URL url, String outputFile) throws IOException {
         try (
                 InputStream input = new BufferedInputStream(url.openStream());
-                OutputStream output = new BufferedOutputStream(new FileOutputStream(outputFile));
+                OutputStream output = new BufferedOutputStream(new FileOutputStream(outputFile))
         ) {
             int b;
             while ((b = input.read()) != -1) {
                 output.write(b);
             }
+        }
+        catch (IOException e) {
+            throw new IOException("cannot write output file");
         }
     }
 }

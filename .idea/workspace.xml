@@ -5,24 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f230fa3-c119-4e3b-a272-6dbdbe531726" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Commands/QuitCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/BlockCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/BlockCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/DownloadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/DownloadCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/PrintCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/PrintCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/UnblockCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/UnblockCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/Validations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/Validations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/AccessUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/AccessUrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/BlockedUrlAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/BlockedUrlAccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/ConcreteAccessUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/ConcreteAccessUrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/CookiesAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/CookiesAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/Decorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/Decorator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/HtmlAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/HtmlAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/ImageAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/ImageAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileManager/FileManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileManager/FileManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/proxie/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxie/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proxie/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxie/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wiki.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +90,7 @@
       <workItem from="1679386416183" duration="49000" />
       <workItem from="1679405031955" duration="2377000" />
       <workItem from="1679642192772" duration="79000" />
-      <workItem from="1679647393975" duration="2258000" />
+      <workItem from="1679647393975" duration="9387000" />
     </task>
     <servers />
   </component>

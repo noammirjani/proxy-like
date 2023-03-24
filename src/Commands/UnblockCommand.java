@@ -27,6 +27,7 @@ public class UnblockCommand implements Command{
     @Override
     public void execute(String url) throws Exception {
 
+        Validations.numOfParameters(url.split(" ").length, 1);
         FileManage.getInstance().removeRow(fileName, url);
     }
 }
