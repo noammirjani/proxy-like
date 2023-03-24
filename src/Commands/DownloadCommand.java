@@ -1,17 +1,34 @@
+/**
+ * The DownloadCommand class implements the Command interface and represents a command that
+ * downloads a remote file from a given URL to the local disk.
+ */
 package Commands;
 import DecoratorForDownload.*;
 import java.io.*;
 import java.net.URL;
 
 public class DownloadCommand implements Command{
+    /** The command options. */
     String[] options = {};
+
+    /** The URL of the file to download. */
     URL url = null;
+
+    /** The path to save the downloaded file. */
     String outputFile = "";
 
-
+    /**
+     * Initializes a new instance of the DownloadCommand class.
+     */
     public DownloadCommand(){}
 
 
+    /**
+     * Sets the data for the download command.
+     *
+     * @param data the command data containing the URL and options (if any) for the download.
+     * @throws Exception if there is an error setting the data.
+     */
     private void setData(String data) throws Exception{
         String[] dataArray = data.split(" ");
 
@@ -31,16 +48,24 @@ public class DownloadCommand implements Command{
         Validations.checkUrl(url.toString());
     }
 
-
+    /**
+     * Executes the download command.
+     *
+     * @param data the command data containing the URL and options (if any) for the download.
+     * @throws Exception if there is an error executing the command.
+     */
     @Override
     public void execute(String data) throws Exception{
-
         setData(data);
         preDownload();
         downloadContent(url, outputFile);
     }
 
-
+    /**
+     * Applies any specified decorators to the AccessUrl object before downloading the file.
+     *
+     * @throws Exception if there is an error applying the decorators.
+     */
     private void preDownload() throws Exception {
 
         AccessUrl decorator = new ConcreteAccessUrl(url);
