@@ -36,7 +36,7 @@ public class Validations {
      * @throws IllegalArgumentException if the number of parameters is incorrect
      */
     public static void numOfParameters(int commandLen, int numOfParams) {
-        if (commandLen != numOfParams) {
+        if (commandLen != numOfParams+1) {
             throw new IllegalArgumentException(INVALID_COMMAND);
         }
     }
@@ -45,7 +45,7 @@ public class Validations {
     public static boolean numOfParametersFlex(int commandLen, int ...numOfParams) {
 
         for (int i : numOfParams) {
-            if (commandLen == i) {
+            if (commandLen+1 == i) {
                 return true;
             }
         }

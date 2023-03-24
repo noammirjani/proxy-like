@@ -25,9 +25,9 @@ public class UnblockCommand implements Command{
      * @throws Exception if an error occurs while removing the URL from the file.
      */
     @Override
-    public void execute(String url) throws Exception {
+    public void execute(String[] url) throws Exception {
 
-        Validations.numOfParameters(url.split(" ").length, 1);
-        FileManage.getInstance().removeRow(fileName, url);
+        Validations.numOfParameters(url.length, 1);
+        FileManage.getInstance().removeRow(fileName, url[0]);
     }
 }

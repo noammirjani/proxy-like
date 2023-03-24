@@ -50,17 +50,17 @@ public class Controller {
         while (true) {
             try {
                 System.out.println("please enter b | u | p | q | d");
-                String userInput =  scanner.next().trim();
+                String[] userInput =  scanner.nextLine().trim().split(" ");
 
-                Command command = CommandsMenu.get(userInput);
+                if (userInput[0].equals("q")) break;
+                Command command = CommandsMenu.get(userInput[0]);
                 if (command == null) {
                     scanner.nextLine();
                     throw new IllegalArgumentException("Invalid command");
                 }
 
-                String data = scanner.nextLine().trim();
-                command.execute(data);
-                if (userInput.equals("q")) break;
+                command.execute(userInput);
+
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

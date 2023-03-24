@@ -5,8 +5,8 @@ public class QuitCommand implements Command{
     public QuitCommand(){}
 
     @Override
-    public void execute(String data){
+    public void execute(String[] data){
 
-        Validations.numOfParameters(data.split("").length, NUM_OF_PARAMETERS);
+        Validations.numOfParameters(data.length, NUM_OF_PARAMETERS);
     }
 }

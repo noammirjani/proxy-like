@@ -19,13 +19,14 @@ public class BlockCommand implements Command {
      * Searches for the given URL in the blocked file,
      * and if it's not already blocked, adds it to the file.
      *
-     * @param url The URL to be blocked.
+     * @param data The URL to be blocked.
      * @throws Exception If there's an error searching for or writing to the blocked file.
      */
     @Override
-    public void execute(String url) throws Exception {
+    public void execute(String[] data) throws Exception {
 
-        Validations.numOfParameters(url.split(" ").length, 1);
+        Validations.numOfParameters(data.length, 1);
+        String url = data[0];
 
         // Search for the given URL in the blocked file.
         String result = FileManage.getInstance().searchInFile(fileName, url);

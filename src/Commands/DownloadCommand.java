@@ -26,11 +26,9 @@ public class DownloadCommand implements Command{
     /**
      * Sets the data for the download command.
      *
-     * @param data the command data containing the URL and options (if any) for the download.
      * @throws Exception if there is an error setting the data.
      */
-    private void setData(String data) throws Exception{
-        String[] dataArray = data.split(" ");
+    private void setData(String[] dataArray) throws Exception{
 
         if(Validations.numOfParametersFlex(dataArray.length, 3, 2)){
             //2 parameters
@@ -55,7 +53,7 @@ public class DownloadCommand implements Command{
      * @throws Exception if there is an error executing the command.
      */
     @Override
-    public void execute(String data) throws Exception{
+    public void execute(String[] data) throws Exception{
         setData(data);
         preDownload();
         downloadContent(url, outputFile);

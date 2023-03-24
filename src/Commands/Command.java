@@ -11,5 +11,5 @@ public interface Command {
      * @param data the data needed to execute the command
      * @throws Exception if there is an error executing the command
      */
-    void execute(String data) throws Exception;
+    void execute(String[] data) throws Exception;
 }
