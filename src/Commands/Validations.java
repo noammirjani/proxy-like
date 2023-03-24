@@ -23,7 +23,7 @@ public class Validations {
 
     public static void numOfParameters(int CommandLen, int numOfParams) {
         if (CommandLen < numOfParams) {
-            throw new IllegalArgumentException(INVALID_COMMAND);
+            throw new IllegalArgumentException("invalid command");
         }
     }
 

@@ -1,22 +1,35 @@
+/**
+ * The Controller class implements a simple command line interface for executing commands.
+ * It contains a HashMap of available commands and maps user inputs to those commands.
+ * The user can enter "b", "u", "p", "d", or "q" to execute different commands.
+ */
 package proxie;
-import Commands.*;
-import FileManager.FileManage;
 
-import java.net.URL;
-import java.net.URLConnection;
+import Commands.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Controller {
+
+    // Scanner object for reading user input
     Scanner scanner = new Scanner(System.in);
-    private Map<String, Command> CommandsMenu = new HashMap<>();
 
+    // HashMap to store available commands
+    private final Map<String, Command> CommandsMenu = new HashMap<>();
+
+    /**
+     * Constructor for the Controller class.
+     * Initializes the available commands in the CommandsMenu HashMap.
+     */
     public Controller(){
-
         setCommandsMenu();
     }
 
+    /**
+     * Initializes the available commands in the CommandsMenu HashMap.
+     * Maps "b" to BlockCommand, "u" to UnblockCommand, "p" to PrintCommand, and "d" to DownloadCommand.
+     */
     private void setCommandsMenu(){
         CommandsMenu.put("b", new BlockCommand());
         CommandsMenu.put("u", new UnblockCommand());
@@ -24,8 +37,15 @@ public class Controller {
         CommandsMenu.put("d", new DownloadCommand());
     }
 
+    /**
+     * Runs the command line interface.
+     * Prompts the user to enter a command and reads user input.
+     * If the input is "q", exits the loop and terminates the program.
+     * If the input matches a valid command, executes the command with user-specified data.
+     * If the input does not match a valid command, throws an IllegalArgumentException with the message "Invalid command".
+     * If an exception occurs during command execution, prints the error message.
+     */
     public void run() {
-
         while (true) {
             try {
                 System.out.println("please enter b | u | p | q | d");
@@ -43,7 +63,7 @@ public class Controller {
                 command.execute(data);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                }
             }
         }
     }
+}
