@@ -52,10 +52,9 @@ public class Controller {
                 String operation = scanner.next().trim();
                 String[] userInput =  scanner.nextLine().trim().split(" ");
 
-                if (userInput[0].equals("q")) break;
+                if (operation.equals("q") && userInput[0].equals("")) break;
                 Command command = CommandsMenu.get(operation);
                 if (command == null) {
-                    scanner.nextLine();
                     throw new IllegalArgumentException("Invalid command");
                 }
 

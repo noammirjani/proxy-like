@@ -28,7 +28,7 @@ public class PrintCommand implements Command {
     @Override
     public void execute(String[] data) throws Exception {
 
-        Validations.numOfParameters(data.length, 0);
+        Validations.dataIsNull(data, 0);
         List<String> lines = FileManage.getInstance().getFileData(fileName);
         Collections.sort(lines);
         System.out.println(String.join("\n", lines));

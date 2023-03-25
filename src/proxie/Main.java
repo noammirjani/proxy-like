@@ -10,5 +10,3 @@ public class Main {
 
 
 // in unblock command do I need to check if the url is valid
-
-// where to put the connection in download or in concrete

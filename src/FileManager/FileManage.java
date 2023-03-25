@@ -37,11 +37,26 @@ public class FileManage {
      * @param url the data to remove from the file
      * @throws IOException if an error occurs while reading or writing to the file
      */
-    public void removeRow(String fileName, String url) throws IOException {
-        Path path = Paths.get(fileName);
-        List<String> lines = Files.readAllLines(path);
+    public void removeRow(String fileName, String url) throws Exception {
+
+        List<String> lines = getFileData(fileName);
         if (lines.remove(url)){
-            Files.write(path, lines);
+            rewriteFile(fileName, lines);
+        }
+    }
+
+    /**
+     * Rewrites a file with new data.
+     *
+     * @param fileName the name of the file to rewrite
+     * @param lines the new data to write to the file
+     * @throws IOException if an error occurs while writing to the file
+     */
+    public void rewriteFile(String fileName, List<String> lines) throws Exception {
+        try {
+            Files.write(Paths.get(fileName), lines);
+        } catch (IOException e) {
+            throwException("cannot write", fileName);
         }
     }
 

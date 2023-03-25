@@ -3,6 +3,7 @@ package Commands;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
 public class Validations {
@@ -10,7 +11,8 @@ public class Validations {
     private static final String INVALID_URL = "invalid URL";
     private static final String INVALID_COMMAND = "invalid command";
     private static final String INVALID_OPTION = "invalid option";
-    private static final List<String> FLAGS = List.of("b","c","h","i");
+    private static final List<String> FLAGS = Arrays.asList("b", "c", "h", "i");
+
 
     /**
      * Checks if a given URL is valid.
@@ -26,6 +28,19 @@ public class Validations {
         } catch (MalformedURLException | URISyntaxException e)  {
             throw new RuntimeException(INVALID_URL);
         }
+    }
+
+    /**
+     * Checks if the data provided for a command is null.
+     *
+     * @param data the data provided for a command
+     * @param numOfParams the number of parameters the command should have
+     * @throws IllegalArgumentException if the data is null
+     */
+    public static void dataIsNull(String[] data, int numOfParams) {
+        if(data == null) return;
+        numOfParameters(data.length, numOfParams+1);
+        if(!data[0].equals("")) throw new IllegalArgumentException(INVALID_COMMAND);
     }
 
     /**

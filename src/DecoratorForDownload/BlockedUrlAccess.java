@@ -30,7 +30,7 @@ public class BlockedUrlAccess extends Decorator {
     @Override
     public void operation(URLConnection connection, String url) throws Exception {
         if (FileManage.getInstance().searchInFile("blocked.txt", url).contains("blocked")) {
-            throw new Exception("Access denied. URL is blocked.");
+            throw new Exception("denied");
         }
         super.operation(connection, url);
     }

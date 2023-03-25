@@ -30,7 +30,7 @@ public class ImageAccess extends Decorator{
     public void operation(URLConnection connection, String url) throws Exception {
 
         String contentType = connection.getContentType();
-        if (contentType != null && contentType.contains("application/image")) {
+        if (contentType != null && contentType.startsWith("image/")) {
             throw new Exception("denied");
         }
 

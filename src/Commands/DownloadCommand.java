@@ -76,11 +76,20 @@ public class DownloadCommand implements Command{
 
         for (String flag : options) {
             switch (flag) {
-                case "b" -> decorator = new BlockedUrlAccess(decorator);
-                case "c" -> decorator = new CookiesAccess(decorator);
-                case "h" -> decorator = new HtmlAccess(decorator);
-                case "i" -> decorator = new ImageAccess(decorator);
-                default -> {}
+                case "b":
+                    decorator = new BlockedUrlAccess(decorator);
+                    break;
+                case "c":
+                    decorator = new CookiesAccess(decorator);
+                    break;
+                case "h":
+                    decorator = new HtmlAccess(decorator);
+                    break;
+                case "i":
+                    decorator = new ImageAccess(decorator);
+                    break;
+                default:
+                    break;
             }
         }
 
