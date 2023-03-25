@@ -1,44 +1,79 @@
+/**
+ * The DownloadCommand class implements the Command interface and represents a command that
+ * downloads a remote file from a given URL to the local disk.
+ */
 package Commands;
 import DecoratorForDownload.*;
-import DecoratorForDownload.Decorator;
-
-import java.net.HttpURLConnection;
 import java.io.*;
+import java.net.URL;
 
 public class DownloadCommand implements Command{
-    private static final int NUM_OF_PARAMETERS = 3;
+    /** The command options. */
+    String[] options = {};
 
+    /** The URL of the file to download. */
+    URL url = null;
+
+    /** The path to save the downloaded file. */
+    String outputFile = "";
+
+    /**
+     * Initializes a new instance of the DownloadCommand class.
+     */
     public DownloadCommand(){}
 
-    @Override
-    public void execute(String data) throws Exception{
-        String[] dataArray = data.split(" ", 3);
 
-        Validations.numOfParameters(dataArray.length, NUM_OF_PARAMETERS);
-        Validations.checkUrl(dataArray[1]);
-        Validations.checkOptions(dataArray[0]);
+    /**
+     * Sets the data for the download command.
+     *
+     * @throws Exception if there is an error setting the data.
+     */
+    private void setData(String[] dataArray) throws Exception{
+        String urlStr = "";
 
-        String[] options = dataArray[0].split("");
-        String url = dataArray[1];
-        String outputFile = dataArray[2];
+        if(Validations.numOfParametersFlex(dataArray.length, 3, 2)) {
 
-        // function to check download flags(note: flags are valid)
-        preDownload(options, url, outputFile);
-
-
-        //create an object of cc = ConcreteAccessUrl
-        //build decorator
-        //decorator.oprion(cc.getConnection, url)
-        //download - solange function
-
+            if (dataArray.length == 2) {
+                //2 parameters
+                options = new String[]{};
+                urlStr = dataArray[0];
+                outputFile = dataArray[1];
+            } else {
+                //3 parameters
+                options = dataArray[0].split("");
+                urlStr = dataArray[1];
+                outputFile = dataArray[2];
+            }
+        }
+        if(Validations.checkUrl(urlStr)) url = new URL(urlStr);
+        Validations.checkOptions(options);
     }
 
-    private void preDownload(String[] options, String url, String outputFile) throws Exception {
-        // Create an instance of the ConcreteAccessUrl class
+    /**
+     * Executes the download command.
+     *
+     * @param data the command data containing the URL and options (if any) for the download.
+     * @throws Exception if there is an error executing the command.
+     */
+    @Override
+    public void execute(String[] data) throws Exception{
+        setData(data);
+        preDownload();
+        downloadContent(url, outputFile);
+    }
+
+    /**
+     * Applies any specified decorators to the AccessUrl object before downloading the file.
+     *
+     * @throws Exception if there is an error applying the decorators.
+     */
+    private void preDownload() throws Exception {
+
         ConcreteAccessUrl concreteAccessUrl = new ConcreteAccessUrl(url);
 
-        // Build the decorator object based on the flags in the options string
-        AccessUrl decorator = concreteAccessUrl;
+        if(options.length == 0) return;
+        AccessUrl decorator = new ConcreteAccessUrl(url);
+
         for (String flag : options) {
             switch (flag) {
                 case "b":
@@ -54,45 +89,33 @@ public class DownloadCommand implements Command{
                     decorator = new ImageAccess(decorator);
                     break;
                 default:
-                    // throw new IllegalArgumentException("Unknown option flag: " + flag);
                     break;
             }
         }
 
-        // Download the file using the decorator object
-        decorator.operation(concreteAccessUrl.getUrlConnection(), url);
-
-        System.out.println("Decorator is great");
-
-        HttpURLConnection httpURLConnection = (HttpURLConnection)concreteAccessUrl.getUrlConnection();
-        httpURLConnection.setRequestMethod("GET");
-        httpURLConnection.connect();
-
-        int responseCode = httpURLConnection.getResponseCode();
-        if (responseCode != HttpURLConnection.HTTP_OK) {
-            throw new Exception(Integer.toString(responseCode));
-        }
-        downloadContent(outputFile, httpURLConnection);
+        decorator.operation(concreteAccessUrl.getUrlConnection(), url.toString());
     }
 
-    private void downloadContent(String outputFile, HttpURLConnection httpURLConnection) throws Exception{
 
-        String inputLine = "";
-
-        // we check if the response is 200 and if the content-type is TEXT
-        BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
-
-        PrintWriter output = new PrintWriter(new FileOutputStream(outputFile));
-
-        // read each line
-        while ((inputLine = in.readLine()) != null) {
-            output.print(inputLine);
+    /**
+     * Downloads a remote file to the local disk.
+     *
+     * @param outputFile the output file to save the source to.
+     * @param url        the source URL.
+     * @exception IOException upon opening streams or reading. Closing of stream IOException is caught.
+     */
+    private void downloadContent(URL url, String outputFile) throws IOException {
+        try (
+                InputStream input = new BufferedInputStream(url.openStream());
+                OutputStream output = new BufferedOutputStream(new FileOutputStream(outputFile))
+        ) {
+            int b;
+            while ((b = input.read()) != -1) {
+                output.write(b);
+            }
         }
-
-        // we finished writing, fail on closing input is not fatal
-        try { in.close(); } catch (Exception e) {}
-        output.close();
-
+        catch (IOException e) {
+            throw new IOException("cannot write output file");
+        }
     }
-
 }
