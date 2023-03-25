@@ -35,7 +35,6 @@ public class Controller {
         CommandsMenu.put("u", new UnblockCommand());
         CommandsMenu.put("p", new PrintCommand());
         CommandsMenu.put("d", new DownloadCommand());
-        CommandsMenu.put("q", new QuitCommand());
     }
 
     /**
@@ -50,17 +49,17 @@ public class Controller {
         while (true) {
             try {
                 System.out.println("please enter b | u | p | q | d");
+                String operation = scanner.next().trim();
                 String[] userInput =  scanner.nextLine().trim().split(" ");
 
                 if (userInput[0].equals("q")) break;
-                Command command = CommandsMenu.get(userInput[0]);
+                Command command = CommandsMenu.get(operation);
                 if (command == null) {
                     scanner.nextLine();
                     throw new IllegalArgumentException("Invalid command");
                 }
 
                 command.execute(userInput);
-
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

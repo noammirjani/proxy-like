@@ -29,8 +29,10 @@ public class ImageAccess extends Decorator{
     @Override
     public void operation(URLConnection connection, String url) throws Exception {
 
-        if(!connection.getContentType().contains("image/"))
+        String contentType = connection.getContentType();
+        if (contentType != null && contentType.contains("application/image")) {
             throw new Exception("denied");
+        }
 
         super.operation(connection, url);
     }

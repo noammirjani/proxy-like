@@ -24,7 +24,8 @@ public class HtmlAccess extends Decorator {
      * @throws Exception if the content type of the URL connection is HTML.
      */
     public void operation(URLConnection connection, String url) throws Exception {
-        if (connection.getContentType().equals("text/html")) {
+        String contentType = connection.getContentType();
+        if (contentType != null && contentType.startsWith("text/html")) {
             throw new Exception("denied");
         }
         super.operation(connection, url);

@@ -5,11 +5,19 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class ConcreteAccessUrl implements AccessUrl{
-    private URLConnection urlConnect;
+    private final URLConnection urlConnect;
 
     public ConcreteAccessUrl(URL url) throws Exception {
 
         this.urlConnect = url.openConnection();
+        HttpURLConnection.setFollowRedirects(false);
+        HttpURLConnection httpURLConnection = (HttpURLConnection)urlConnect;
+        httpURLConnection.setRequestMethod("HEAD");
+
+        int responseCode = httpURLConnection.getResponseCode();
+        if (responseCode != HttpURLConnection.HTTP_OK) {
+            throw new Exception(Integer.toString(responseCode));
+        }
     }
 
     public URLConnection getUrlConnection(){
@@ -19,13 +27,3 @@ public class ConcreteAccessUrl implements AccessUrl{
     @Override
     public void operation(URLConnection connection, String url) {}
 }
-
-
-//   HttpURLConnection.setFollowRedirects(false);
-//        HttpURLConnection httpURLConnection = (HttpURLConnection)urlConnect;
-//        httpURLConnection.setRequestMethod("HEAD");
-//
-//        int responseCode = httpURLConnection.getResponseCode();
-//        if (responseCode != HttpURLConnection.HTTP_OK) {
-//            throw new Exception(Integer.toString(responseCode));
-//        }

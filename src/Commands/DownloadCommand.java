@@ -29,21 +29,24 @@ public class DownloadCommand implements Command{
      * @throws Exception if there is an error setting the data.
      */
     private void setData(String[] dataArray) throws Exception{
+        String urlStr = "";
 
-        if(Validations.numOfParametersFlex(dataArray.length, 3, 2)){
-            //2 parameters
-            options = new String[]{};
-            url = new URL(dataArray[0]);
-            outputFile = dataArray[1];
+        if(Validations.numOfParametersFlex(dataArray.length, 3, 2)) {
+
+            if (dataArray.length == 2) {
+                //2 parameters
+                options = new String[]{};
+                urlStr = dataArray[0];
+                outputFile = dataArray[1];
+            } else {
+                //3 parameters
+                options = dataArray[0].split("");
+                urlStr = dataArray[1];
+                outputFile = dataArray[2];
+            }
         }
-        else{
-            //3 parameters
-            options = dataArray[0].split("");
-            url = new URL(dataArray[1]);
-            outputFile = dataArray[2];
-        }
+        if(Validations.checkUrl(urlStr)) url = new URL(urlStr);
         Validations.checkOptions(options);
-        Validations.checkUrl(url.toString());
     }
 
     /**
@@ -66,7 +69,11 @@ public class DownloadCommand implements Command{
      */
     private void preDownload() throws Exception {
 
+        ConcreteAccessUrl concreteAccessUrl = new ConcreteAccessUrl(url);
+
+        if(options.length == 0) return;
         AccessUrl decorator = new ConcreteAccessUrl(url);
+
         for (String flag : options) {
             switch (flag) {
                 case "b" -> decorator = new BlockedUrlAccess(decorator);
@@ -76,6 +83,8 @@ public class DownloadCommand implements Command{
                 default -> {}
             }
         }
+
+        decorator.operation(concreteAccessUrl.getUrlConnection(), url.toString());
     }
 
 

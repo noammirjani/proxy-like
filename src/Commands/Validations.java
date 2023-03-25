@@ -36,16 +36,23 @@ public class Validations {
      * @throws IllegalArgumentException if the number of parameters is incorrect
      */
     public static void numOfParameters(int commandLen, int numOfParams) {
-        if (commandLen != numOfParams+1) {
+        if (commandLen != numOfParams) {
             throw new IllegalArgumentException(INVALID_COMMAND);
         }
     }
 
 
+    /**
+     * Checks if the number of parameters provided for a command is one of the accepted numbers.
+     * @param commandLen the number of parameters provided for a command.
+     * @param numOfParams the accepted numbers of parameters.
+     * @return true if the number of parameters is one of the accepted numbers.
+     * @throws IllegalArgumentException if the number of parameters is not one of the accepted numbers.
+     */
     public static boolean numOfParametersFlex(int commandLen, int ...numOfParams) {
 
         for (int i : numOfParams) {
-            if (commandLen+1 == i) {
+            if (commandLen == i) {
                 return true;
             }
         }
@@ -64,7 +71,7 @@ public class Validations {
         if(flags.length == 0) {return;}
 
         if(!flags[0].equals("-")) {
-            throw new IllegalArgumentException(INVALID_OPTION);
+            throw new IllegalArgumentException(INVALID_COMMAND);
         }
         for (int i = 0 ; i < flags.length ; i++) {
             if (i == 0) continue;

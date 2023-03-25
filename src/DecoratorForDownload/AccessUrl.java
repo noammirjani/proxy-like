@@ -1,9 +1,9 @@
 /**
-
- The AccessUrl interface represents a component of the Decorator pattern.
- It declares a single method, operation, which must be implemented by all decorators.
- The operation method modifies the behavior of the URLConnection object passed as an argument,
- according to the specific decorator's functionality.
+ *
+ * The AccessUrl interface represents a component of the Decorator pattern.
+ * It declares a single method, operation, which must be implemented by all decorators.
+ * The operation method modifies the behavior of the URLConnection object passed as an argument,
+ * according to the specific decorator's functionality.
  */
 package DecoratorForDownload;
 import java.net.URLConnection;
