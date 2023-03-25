@@ -48,7 +48,6 @@ public class Controller {
     public void run() {
         while (true) {
             try {
-                System.out.println("please enter b | u | p | q | d");
                 String operation = scanner.next().trim();
                 String[] userInput =  scanner.nextLine().trim().split(" ");
 
