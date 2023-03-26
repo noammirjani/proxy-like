@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Validations {
 
@@ -24,8 +26,25 @@ public class Validations {
     public static boolean checkUrl(String url) {
         try {
             new URL(url).toURI();
+            checkURLbyRegex(url);
             return true;
         } catch (MalformedURLException | URISyntaxException e)  {
+            throw new RuntimeException(INVALID_URL);
+        }
+    }
+
+
+    /**
+     * Checks if a given URL is valid by regex.
+     *
+     * @param url the URL to be checked
+     * @throws RuntimeException if the URL is invalid
+     */
+    public static void checkURLbyRegex(String url) {
+        String regex = "^(https?|ftp)://[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+([/?#].*)?$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(url);
+        if(!matcher.matches()) {
             throw new RuntimeException(INVALID_URL);
         }
     }
