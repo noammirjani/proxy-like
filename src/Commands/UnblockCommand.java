@@ -1,7 +1,6 @@
 package Commands;
 
 import FileManager.FileManage;
-import java.net.URL;
 
 /**
  * Command to unblock a URL in the blocked.txt file.

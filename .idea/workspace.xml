@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5f230fa3-c119-4e3b-a272-6dbdbe531726" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/BlockCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/BlockCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/DownloadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/DownloadCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/PrintCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/PrintCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/UnblockCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/UnblockCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/Validations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/Validations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/ConcreteAccessUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/ConcreteAccessUrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proxie/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxie/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileManager/FileManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileManager/FileManage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +98,7 @@
       <workItem from="1679741677304" duration="3153000" />
       <workItem from="1679836495191" duration="3377000" />
       <workItem from="1679841741090" duration="9012000" />
+      <workItem from="1679853574169" duration="1074000" />
     </task>
     <servers />
   </component>
