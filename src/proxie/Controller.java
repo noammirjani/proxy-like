@@ -49,7 +49,8 @@ public class Controller {
         while (true) {
             try {
                 String operation = scanner.next().trim();
-                String[] userInput =  scanner.nextLine().trim().split(" ");
+                String[] userInput =  scanner.nextLine().trim().split("\\s+");
+
 
                 if (operation.equals("q") && userInput[0].equals("")) break;
                 Command command = CommandsMenu.get(operation);

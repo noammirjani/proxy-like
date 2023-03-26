@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5f230fa3-c119-4e3b-a272-6dbdbe531726" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/BlockCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/BlockCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/DownloadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/DownloadCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/PrintCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/PrintCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/UnblockCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/UnblockCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Commands/Validations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/Validations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/proxie/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxie/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DecoratorForDownload/ConcreteAccessUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DecoratorForDownload/ConcreteAccessUrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/proxie/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxie/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +73,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="ex2" type="Application" factoryName="Application">
+    <configuration name="EX_2_RUN" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="proxie.Main" />
       <module name="ex2-java-neviim-ex2_ariel_amon_noam_mirjani" />
       <method v="2">
@@ -97,6 +101,7 @@
       <workItem from="1679647393975" duration="20276000" />
       <workItem from="1679741677304" duration="3153000" />
       <workItem from="1679836495191" duration="3377000" />
+      <workItem from="1679841741090" duration="9012000" />
     </task>
     <servers />
   </component>

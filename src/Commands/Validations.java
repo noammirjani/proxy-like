@@ -25,6 +25,7 @@ public class Validations {
      */
     public static boolean checkUrl(String url) {
         try {
+            if (url.equals("")) throw new RuntimeException(INVALID_COMMAND);
             new URL(url).toURI();
             checkURLbyRegex(url);
             return true;
@@ -53,24 +54,26 @@ public class Validations {
      * Checks if the data provided for a command is null.
      *
      * @param data the data provided for a command
-     * @param numOfParams the number of parameters the command should have
      * @throws IllegalArgumentException if the data is null
      */
-    public static void dataIsNull(String[] data, int numOfParams) {
+    public static void dataIsNull(String[] data) {
         if(data == null) return;
-        numOfParameters(data.length, numOfParams+1);
-        if(!data[0].equals("")) throw new IllegalArgumentException(INVALID_COMMAND);
+
+        if(!data[0].equals("") || data.length != 1) {
+            throw new IllegalArgumentException(INVALID_COMMAND);
+        }
     }
 
     /**
      * Checks if the number of parameters for a command is correct.
      *
-     * @param commandLen the length of the command
+     * @param parametrs the length of the command
      * @param numOfParams the number of parameters the command should have
      * @throws IllegalArgumentException if the number of parameters is incorrect
      */
-    public static void numOfParameters(int commandLen, int numOfParams) {
-        if (commandLen != numOfParams) {
+    public static void numOfParameters(String [] parametrs, int numOfParams) {
+
+        if ( parametrs == null || parametrs.length != numOfParams || parametrs[0].equals("")) {
             throw new IllegalArgumentException(INVALID_COMMAND);
         }
     }

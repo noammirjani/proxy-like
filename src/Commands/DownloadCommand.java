@@ -70,8 +70,8 @@ public class DownloadCommand implements Command{
     private void preDownload() throws Exception {
 
         ConcreteAccessUrl concreteAccessUrl = new ConcreteAccessUrl(url);
-
         if(options.length == 0) return;
+
         AccessUrl decorator = new ConcreteAccessUrl(url);
 
         for (String flag : options) {
@@ -94,6 +94,7 @@ public class DownloadCommand implements Command{
         }
 
         decorator.operation(concreteAccessUrl.getUrlConnection(), url.toString());
+
     }
 
 

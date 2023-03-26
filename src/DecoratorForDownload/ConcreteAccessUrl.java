@@ -10,11 +10,13 @@ public class ConcreteAccessUrl implements AccessUrl{
     public ConcreteAccessUrl(URL url) throws Exception {
 
         this.urlConnect = url.openConnection();
-        HttpURLConnection.setFollowRedirects(false);
-        HttpURLConnection httpURLConnection = (HttpURLConnection)urlConnect;
-        httpURLConnection.setRequestMethod("HEAD");
+        HttpURLConnection con = (HttpURLConnection)urlConnect;
+        con.setRequestMethod("GET");
 
-        int responseCode = httpURLConnection.getResponseCode();
+        con.connect();
+
+        int responseCode = con.getResponseCode();
+
         if (responseCode != HttpURLConnection.HTTP_OK) {
             throw new Exception(Integer.toString(responseCode));
         }

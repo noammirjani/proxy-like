@@ -25,7 +25,7 @@ public class BlockCommand implements Command {
     @Override
     public void execute(String[] data) throws Exception {
 
-        Validations.numOfParameters(data.length, 1);
+        Validations.numOfParameters(data, 1);
         String url = data[0];
 
         // Search for the given URL in the blocked file.
