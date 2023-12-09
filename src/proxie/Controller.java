@@ -37,6 +37,17 @@ public class Controller {
         CommandsMenu.put("d", new DownloadCommand());
     }
 
+    public void printMenu() {
+        System.out.println("Available Commands:");
+        System.out.println("b : Blocks a URL and adds it to the list of blocked URLs saved to the file.");
+        System.out.println("u : Unblocks a URL and updates the list.");
+        System.out.println("p : Prints the current list of blocked sites alphabetically ordered.");
+        System.out.println("q : Exits the program.");
+        System.out.println("d <-options> : Downloads the contents of the given URL to a file, applying the specified denying options.");
+        System.out.println("  Possible flags: i: Blocks images, c: Blocks HTTP cookies, h: Blocks HTML documents, b: Denies access to blocked sites.");
+    }
+
+
     /**
      * Runs the command line interface.
      * Prompts the user to enter a command and reads user input.
@@ -46,6 +57,7 @@ public class Controller {
      * If an exception occurs during command execution, prints the error message.
      */
     public void run() {
+        printMenu();
         while (true) {
             try {
                 String operation = scanner.next().trim();

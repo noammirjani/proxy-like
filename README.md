@@ -1,50 +1,70 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/cj2Bo1xr)
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-8d59dc4de5201274e310e4c54b9627a8934c3b88527886e3b421487c677d23eb.svg)](https://classroom.github.com/a/cj2Bo1xr)
+# Proxy-like Functionality for Controlling URL Resource Downloads
 
-# Project Title
+## Table of Contents
 
-Proxy-like Functionality for Controlling URL Resource Downloads.
-This console-based application allows users to test proxy-like functions for controlling the downloading of URL resources from the web. The program offers several options for denying access to specific types of resources, including blocked sites, images, HTML documents, and resources containing cookies.
+- [Introduction](#introduction)
+- [Authors](#authors)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Design Patterns](#design-patterns)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+This console-based Java application provides proxy-like functionality to control the downloading of URL resources from the web. It offers options to deny access to specific types of resources such as blocked sites, images, HTML documents, and resources containing cookies.
 
 ## Authors
 
-- [@Noam Mirjani]()  Noammir@edu.hac.ac.il
-- [@Ariel Amon]()    Arielam@edu.hac.ac.il
-
+- [@Noam Mirjani](mailto:Noammir@edu.hac.ac.il)
+- [@Ariel Amon](mailto:Arielam@edu.hac.ac.il)
 
 ## Installation
 
+Clone the repository using:
 ```bash
-
-  git clone https://github.com/Solange-s-Courses/ex2-java-neviim-ex2_ariel_amon_noam_mirjani.git
-
-
+git clone https://github.com/Solange-s-Courses/ex2-java-neviim-ex2_ariel_amon_noam_mirjani.git
+```
+Compile the Java files using:
+```bash 
+javac Main.java
+```
+Run the program using:
+``` bash
+java Main
 ```
 
+# Usage
 
-## Usage
+The program implements various console commands:
 
-The program implements several console commands that allow users to manage blocked sites and control downloads:
+- **b:** Blocks a URL and adds it to the list of blocked URLs saved to a file.
+- **u:** Unblocks a URL and updates the list.
+- **p:** Prints the current list of blocked sites alphabetically ordered.
+- **q:** Exits the program.
+- **d <-options>:** Downloads the contents of the given URL to a file, applying specified denying options. Download options can be defined in any order, and redundant options include:
+    - **i:** Blocks images
+    - **c:** Blocks HTTP cookies
+    - **h:** Blocks HTML documents
+    - **b:** Denies access to blocked sites
+## Design Patterns
 
-b <url>: Blocks a URL and adds it to the list of blocked URLs saved to the file.
+The program utilizes various design patterns for improved code structure and maintainability:
 
-u <url>: Unblocks a URL and updates the list.
+- **Command Pattern:** Implemented for menu commands, providing clear separation between commands and their implementation.
+- **Singleton Pattern:** Used for the file manager class to centralize and manage file operations within a single instance, enhancing maintainability and reducing error risks.
+- **Decorator Pattern:** Employed for download options, allowing flexible addition and removal of functionality to the download process. It enables easy modification based on user flags and provides a better user experience by checking URL validity appropriately.
 
-p: Prints the current list of blocked sites alphabetically ordered.
+## Contributing
 
-q: Exits the program.
+Include guidelines for others to contribute to the project, like pull request procedures, code formatting, etc.
 
-d <-options> <url> <out>: Downloads the contents of the given URL to a file, applying the specified denying options.Download options can be defined in any order, and redundant options. possible flags:
-i: Blocks images
-c: Blocks HTTP cookies
-h: Blocks HTML documents
-b: Denies access to blocked sites.
+## Dependencies
 
+This program does not require any external dependencies beyond the JDK.
 
-## Design patterns
-The program is designed using several design patterns to improve code structure and maintainability.
-The Command pattern was chosen for implementing the menu commands as it provides a clear separation between the commands and their implementation, making it easier to modify and extend the program's functionality without affecting other parts of the code.
+## Acknowledgements
+This program was developed as part of the Web Development course at HAC.
 
-The Singleton pattern was used for the file manager class to ensure that all file operations are centralized and managed by a single instance of the class, improving code maintainability and reducing the risk of errors.
+Feel free to adjust the JDK version or add any specific commands needed for your Java application to compile and run. Additionally, you can expand on dependencies or any further instructions required for users to execute your program successfully.
 
-The Decorator pattern was chosen to implement the download options as it allows for flexible and dynamic addition of functionality to the download process. By using the decorator pattern, the program can add or remove download options easily, without modifying the core functionality of the program. Additionally, it enables the program to check the validity of the URL based on the user flags and provide an appropriate response, improving the user experience.
