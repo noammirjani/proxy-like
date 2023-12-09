@@ -23,7 +23,7 @@ This console-based Java application provides proxy-like functionality to control
 
 Clone the repository using:
 ```bash
-git clone https://github.com/Solange-s-Courses/ex2-java-neviim-ex2_ariel_amon_noam_mirjani.git
+git clone https://github.com/noammirjani/proxy-like.git
 ```
 Compile the Java files using:
 ```bash 
